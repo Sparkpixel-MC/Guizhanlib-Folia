@@ -116,10 +116,14 @@ subprojects {
 publishing {
     publications {
         create<MavenPublication>("maven") {
+            val allProject = project(":guizhanlib-all")
+            artifact(allProject.tasks.named<ShadowJar>("shadowJar").get().archiveFile.get()) {
+                builtBy(allProject.tasks.named("shadowJar"))
+            }
+            
             groupId = "net.guizhanss"
             artifactId = "guizhanlib"
             version = "2.4.0-Folia"
-            artifact(tasks.named("shadowJar").get().outputs.files.singleFile)
             pom {
                 name.set("Guizhanlib")
                 description.set("Guizhanlib Library")
