@@ -119,7 +119,7 @@ publishing {
             groupId = "net.guizhanss"
             artifactId = "guizhanlib"
             version = "2.4.0-Folia"
-            artifact(tasks.named("jar").get().outputs.files.singleFile)
+            artifact(tasks.named("shadowJar").get().outputs.files.singleFile)
             pom {
                 name.set("Guizhanlib")
                 description.set("Guizhanlib Library")
